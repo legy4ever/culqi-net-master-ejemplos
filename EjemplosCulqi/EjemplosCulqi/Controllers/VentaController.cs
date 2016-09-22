@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using EjemplosCulqi.Models;
 using System.Web.Script.Serialization;
-using System.Net;
-using System.Text;
-using System.IO;
 using RestSharp;
 
 namespace EjemplosCulqi.Controllers
@@ -51,9 +47,7 @@ namespace EjemplosCulqi.Controllers
             var request = new RestRequest();
             request.Method = Method.POST;
             request.AddHeader("authorization", "Bearer " + llave_secreta);
-            request.AddHeader("accept", "application/json");
             request.AddHeader("content-type", "application/json");
-            request.Parameters.Clear();
             request.AddParameter("application/json", jsonVenta, ParameterType.RequestBody);
             var response = client.Execute(request);
             var content = response.Content;

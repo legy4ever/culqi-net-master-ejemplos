@@ -13,5 +13,12 @@ namespace EjemplosCulqi.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult NuevoToken(String token)
+        {
+            System.Diagnostics.Debug.WriteLine("Token [" + token + "] generado correctamente!");
+            return View();
+        }
     }
 }

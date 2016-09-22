@@ -28,7 +28,7 @@
         moneda: 'PEN',
         descripcion: 'Nuevo Token',
         monto: 100,
-        guardar: true
+        guardar: false
     });
 </script>
 <!---->
@@ -48,6 +48,28 @@ function culqi() {
       console.log(Culqi.error);
       alert("Culqi.error.mensaje");
     }
+};
+</script>
+<script>
+// Ejemplo: Tratando respuesta con AJAX (jQuery)
+function culqi() {
+
+    $.ajax({
+        url: "@Url.Action("NuevoToken")",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({
+
+                'token'       : Culqi.token.id
+
+            }),
+       success: function(data){
+
+       },
+       error:function( ){
+
+       }
+    });
 };
 </script>
 <!---->

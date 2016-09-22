@@ -1,9 +1,9 @@
 ﻿
 @{
-    ViewBag.Title = "NuevaVenta";
+    ViewBag.Title = "NuevaSuscripcion";
 }
 
-<h2>NuevaVenta</h2>
+<h2>NuevaSuscripcion</h2>
 
 @Html.TextBox("codigo_comercio", (string)ViewBag.codigo_comercio)
 <button id="botonPagar">Pagar</button>
@@ -18,18 +18,18 @@
 <!---->
 <!-- Asigna el código del comercio -->
 <script>
-    Culqi.codigoComercio = '6Xb9O1C2yFhd';
+    Culqi.codigoComercio = 'v2JdOBEqI1XL';
 </script>
 <!---->
 <!-- Configuración del contenido del checkout Culqi -->
 <script>
     Culqi.configurar({
-        nombre: 'Comercio Nano 2',
-        orden: 'Prueba0009',
+        nombre: 'Comercio Prueba .Net',
+        orden: 'ABC0001',
         moneda: 'PEN',
         descripcion: 'Venta',
         monto: 100,
-        guardar: false
+        guardar: true
     });
 </script>
 <!---->
@@ -56,24 +56,22 @@ function culqi() {
 function culqi() {
 
     $.ajax({
-        url: "@Url.Action("NuevaVenta")",
+        url: "@Url.Action("NuevaSuscripcion")",
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify({
 
-            'token'               : Culqi.token.id,
-            'moneda'              : 'PEN',
-            'monto'               : '100',
-            'descripcion'         : 'Venta de prueba',
-            'pedido'              : 'Prueba0009',
-            'codigo_pais'         : 'PE',
-            'ciudad'              : 'Lima',
-            'usuario'             : 'Usuario de Prueba',
-            'direccion'           : 'Av. Arequipa 123',
-            'telefono'            : '987654321',
-            'nombres'             : 'Luis',
-            'apellidos'           : 'Gonzales',
-            'correo_electronico'  : 'lgonzales@me.com'
+            'codigo_comercio'       : Culqi.codigoComercio,
+            'codigo_pais'           : 'PE',
+            'direccion'             : 'Av. Arequipa 123',
+            'ciudad'                : 'Lima',
+            'telefono'              : '987654321',
+            'nombre'                : 'Luis',
+            'correo_electronico'    : 'lgonzales@me.com',
+            'apellido'              : 'Gonzales',
+            'usuarioId'             : 'Usuario de Prueba',
+            'plan_id'               : 'plan_prueba_001',
+            'token'                 : Culqi.token.id,
 
         }),
         success: function(data){
